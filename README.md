@@ -1,3 +1,3 @@
 # Leetcode Problems with solution
-## Top 50 SQL
-## Pandas
+## 1. Top 50 SQL
+## 2. Pandas
