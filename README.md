@@ -1,2 +1,3 @@
-# Leetcode_Pandas
-Leetcode Problem and solution regarding Pandas
+# Leetcode Problems with solution
+## Top 50 SQL
+## Pandas
