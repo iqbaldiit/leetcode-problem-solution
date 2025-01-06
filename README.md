@@ -1,3 +1,3 @@
 # Leetcode Problems with solution
-## 1. Top 50 SQL
-## 2. Pandas
+## 1. Introduction to pandas
+## 2. SQL 50 (MSSQL)
