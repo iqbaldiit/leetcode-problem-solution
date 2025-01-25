@@ -63,6 +63,9 @@ FROM Patients
 CROSS APPLY STRING_SPLIT(conditions, ' ')
 WHERE value LIKE 'DIAB1%';
 
+SELECT patient_id,patient_name, conditions
+FROM Patients WHERE conditions LIKE '%DIAB1%'
+
 ----Solution (PostGresSQL)
 --SELECT patient_id, patient_name, conditions
 --FROM Patients
