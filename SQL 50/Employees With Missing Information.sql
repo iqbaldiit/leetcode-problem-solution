@@ -80,14 +80,14 @@ INSERT INTO Salaries VALUES(5,76071);
 INSERT INTO Salaries VALUES(1,22517);
 INSERT INTO Salaries VALUES(4,63539);
 
---Solution (MSSQL, PostGresSQL)-- Approach:1
+--Solution (MSSQL, PostGresSQL, MySQL)-- Approach:1
 
---SELECT S.employee_id FROM Employees E
---RIGHT JOIN Salaries S ON E.employee_id=S.employee_id WHERE E.name IS NULL
---UNION ALL
---SELECT E.employee_id FROM Employees E
---LEFT JOIN Salaries S ON E.employee_id=S.employee_id WHERE S.salary  IS NULL
---ORDER BY employee_id
+SELECT S.employee_id FROM Employees E
+RIGHT JOIN Salaries S ON E.employee_id=S.employee_id WHERE E.name IS NULL
+UNION ALL
+SELECT E.employee_id FROM Employees E
+LEFT JOIN Salaries S ON E.employee_id=S.employee_id WHERE S.salary  IS NULL
+ORDER BY employee_id
 
 --Solution (MSSQL, PostGresSQL)-- Approach:2
 SELECT COALESCE(E.employee_id,S.employee_id) employee_id
