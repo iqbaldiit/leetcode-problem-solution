@@ -15,9 +15,7 @@
 
 --The test cases are generated so that only one person has the most friends.
 
---The result format is in the following example.
-
- 
+--The result format is in the following example. 
 
 --Example 1:
 
