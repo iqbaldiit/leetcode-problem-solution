@@ -59,7 +59,7 @@ INSERT INTO World VALUES('Algeria','Africa',2381741,37100000 ,188681000000)
 INSERT INTO World VALUES('Andorra','Europe',468,78115,3712000000  )
 INSERT INTO World VALUES('Angola ','Africa',1246700,20609294 ,100990000000)
 
-/* Write your T-SQL query statement below */
+/*Solution (MSSQL, PostGreSQL, MySQL) */
 SELECT name, population, area FROM World WHERE (area>=3000000 OR population>=25000000)
 
 DROP TABLE World
