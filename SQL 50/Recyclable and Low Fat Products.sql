@@ -54,7 +54,7 @@ INSERT INTO Products VALUES (2,'N','Y')
 INSERT INTO Products VALUES (3,'Y','Y')
 INSERT INTO Products VALUES (4,'N','N')
 
---- Solution
+--- Solution (MSSQL, PostGreSQL, MySQL)
 SELECT product_id FROM Products WHERE low_fats='Y' AND recyclable='Y'
 --- Drop table
 
