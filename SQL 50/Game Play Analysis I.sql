@@ -58,7 +58,7 @@ INSERT INTO Activity VALUES (2,3,'2017-06-25',1);
 INSERT INTO Activity VALUES (3,1,'2016-03-02',0);
 INSERT INTO Activity VALUES (3,4,'2018-07-03',5);
 
---Solution
+--Solution (MSSQL, PGSQL, MYSQL)
 SELECT player_id, MIN(event_date) first_login FROM Activity
 GROUP BY player_id;
 
