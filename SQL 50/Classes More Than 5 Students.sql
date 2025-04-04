@@ -1,3 +1,8 @@
+
+--Source (msSQL): https://leetcode.com/problems/classes-more-than-5-students/solutions/6610009/simple-best-solution-by-iqbaldiit-8xd8/
+--Source (mySQL): https://leetcode.com/problems/classes-more-than-5-students/solutions/6609988/simple-best-solution-by-iqbaldiit-5wgm/
+--Source (pgSQL): https://leetcode.com/problems/classes-more-than-5-students/solutions/6610004/simple-best-solution-by-iqbaldiit-g80a/
+
 --Classes More Than 5 Students
 /*
 Table: Courses
@@ -65,7 +70,7 @@ INSERT INTO Courses VALUES('H','Math')
 INSERT INTO Courses VALUES('I','Math')
 
 
-/* Solution */
+/* Solution (msSQL, mySQLm pgSQL) */
 SELECT class FROM (
 SELECT class, COUNT(student) ct FROM Courses GROUP BY class    
 HAVING COUNT(student)>=5)tab
