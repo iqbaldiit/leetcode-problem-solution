@@ -5,9 +5,6 @@
 # Bicycle Racing Platform
 
 ## Biggest Challenges
-
-## Technical Challenges and Solutions
-
 This section outlines the major technical challenges anticipated for the system and the proposed solutions to address them.
 
 1.  **Handling Concurrent User Access in Real Time:**
@@ -61,78 +58,79 @@ The diagram belows shows the high level component diagram that could be used to 
 ![High Level Architecture Diagram](/assets/diagram-placeholder.png)
 
 On the basis of application context, technology familiarity of the organization, Scalability, High availability, performance and business continuity, hybrid model using AWS Serverless and microservice architecture is well suited.
-1.	AWS Serverless: cost efficiency, scalability and simplicity. Well suited for backend APIs including all administrative functions, user management, race configuration and so on.
-2.	Containerized Microservice is for real-time processing and high performance. Avoid connection managements challenges of pure serverless.
 
-Architecture overview
-1.	Client Applications
-    a.	Mobile App Tracker uses MQTT (Message Queuing Telemetry Transport) via AWS IoT real time telemetry.
-    b.	Web & Mobile App for general user integrate via API Gateway (REST) and AppSync for live updates.
+1.  **AWS Serverless:** cost efficiency, scalability and simplicity. Well suited for backend APIs including all administrative functions, user management, race configuration and so on.
+2.  **Containerized Microservice** is for real-time processing and high performance. Avoid connection managements challenges of pure serverless.
 
-2.	Authentication: AWS Cognito manages authentication with security of API and web socket access.
+**Architecture overview**
 
-3.	Real time data processing: 
-    a.	AWS IoT Core + Kinesis computes live telemetry.
-    b.	Lambda Aggregation processes events before storage.
-    c.	Timestream efficiently handle data for analytics
+1.  **Client Applications**
+    * a.  Mobile App Tracker uses MQTT (Message Queuing Telemetry Transport) via AWS IoT real time telemetry.
+    * b.  Web & Mobile App for general user integrate via API Gateway (REST) and AppSync for live updates.
 
-4.	Microservices (AWS Fargate)
-    a.	Auto-scaled WebSocket (Node.js) service for real-time communication.
-    b.	Redis (ElastiCache) for low-latency real-time data retrieval.
+2.  **Authentication:** AWS Cognito manages authentication with security of API and web socket access.
 
-5.	Backend Service (AWS Lambda)
-    a.	Handles User, Race, and Admin Management with minimal overhead.
-    b.	AWS S3 for static data and DynamoDB for operational data.
+3.  **Real time data processing:**
+    * a.  AWS IoT Core + Kinesis computes live telemetry.
+    * b.  Lambda Aggregation processes events before storage.
+    * c.  Timestream efficiently handle data for analytics
 
-6.	Data Layer
-    a.	DynamoDb for user profile, race configuration and other operation.
-    b.	For historical, statistical or analytics ready data we need transformation. So we load data to AWS S3 Data Lake from timestream db through ETL Glue  and send it to the Aurora Database.
-    c.	Dynamodb transform and load the data to Aurora through lambda.
+4.  **Microservices (AWS Fargate)**
+    * a.  Auto-scaled WebSocket (Node.js) service for real-time communication.
+    * b.  Redis (ElastiCache) for low-latency real-time data retrieval.
 
+5.  **Backend Service (AWS Lambda)**
+    * a.  Handles User, Race, and Admin Management with minimal overhead.
+    * b.  AWS S3 for static data and DynamoDB for operational data.
 
+6.  **Data Layer**
+    * a.  DynamoDb for user profile, race configuration and other operation.
+    * b.  For historical, statistical or analytics ready data we need transformation. So we load data to AWS S3 Data Lake from timestream db through ETL Glue  and send it to the Aurora Database.
+    * c.  Dynamodb transform and load the data to Aurora through lambda.
+  
 ### Technology Stack
-1.	Web App (Admin and general user): React.js
+1.  **Web App (Admin and general user):** React.js
 
-2.	Mobile App: React Native, SQLite db -> Support both Android and IOS.
+2.  **Mobile App:** React Native, SQLite db -> Support both Android and IOS.
 
-3.	Authentication & Authorization: AWS Cognito -> Support OAuth, OpenID and federated login.
+3.  **Authentication & Authorization:** AWS Cognito -> Support OAuth, OpenID and federated login.
 
-4.	Backend Service: 
-    a.	AWS Lambda (Node.js)-> Serverless backend services for managing races, participants, and users.
-    b.	Express.js -> Handle API request and business logic.
+4.  **Backend Service:**
+    * a.  AWS Lambda (Node.js)-> Serverless backend services for managing races, participants, and users.
+    * b.  Express.js -> Handle API request and business logic.
 
-5.	API Management
-    a.	AWS API Gateway-> Manages API requests and route them to backend services (Lambda, Fargate)
-    b.	AWS AppSync-> Provides real-time updates via GraphQL API, optimized for WebSockets.
+5.  **API Management**
+    * a.  AWS API Gateway-> Manages API requests and route them to backend services (Lambda, Fargate)
+    * b.  AWS AppSync-> Provides real-time updates via GraphQL API, optimized for WebSockets.
 
-6.	Real time data processing:
-    a.	AWS Iot Core-> Collect  real time location data from mobile trackers via MQTT.
-    b.	AWS Kinesis Data Streams -> Handles high-velocity telemetry data and ensures scalability.
-    c.	AWS Lambda -> Aggregates and processes incoming IoT data.
+6.  **Real time data processing:**
+    * a.  AWS Iot Core-> Collect  real time location data from mobile trackers via MQTT.
+    * b.  AWS Kinesis Data Streams -> Handles high-velocity telemetry data and ensures scalability.
+    * c.  AWS Lambda -> Aggregates and processes incoming IoT data.
 
-7.	Microservice for race tracking:
-    a.	AWS Fargate (ECS)-> Runs containerized services without managing servers.
-    b.	Node.js + WebSocket-> Handles live event updates for the race dashboard.
-    c.	AWS ElastiCache (Redis) -> Caches race data for low-latency performance.
-    d.	Fargate Auto-scaling -> Ensures dynamic scalability during high traffic.  
+7.  **Microservice for race tracking:**
+    * a.  AWS Fargate (ECS)-> Runs containerized services without managing servers.
+    * b.  Node.js + WebSocket-> Handles live event updates for the race dashboard.
+    * c.  AWS ElastiCache (Redis) -> Caches race data for low-latency performance.
+    * d.  Fargate Auto-scaling -> Ensures dynamic scalability during high traffic.
 
-8.	Data Layer (Storage & Analytics):
-    a.	AWS Timestream -> Store telemetry and event tracking data efficiently.
-    b.	AWS DynamoDB-> key value storage for user profile, administration and race related data.
-    c.	AWS S3 Data Lake -> Stores aggregated race history and statistical data.
-    d.	Amazon Aurora (PostgreSQL) -> Stores structured analytics data and supports SQL-based queries.
-    e.	AWS Glue -> for ETL data pipeline.
+8.  **Data Layer (Storage & Analytics):**
+    * a.  AWS Timestream -> Store telemetry and event tracking data efficiently.
+    * b.  AWS DynamoDB-> key value storage for user profile, administration and race related data.
+    * c.  AWS S3 Data Lake -> Stores aggregated race history and statistical data.
+    * d.  Amazon Aurora (PostgreSQL) -> Stores structured analytics data and supports SQL-based queries.
+    * e.  AWS Glue -> for ETL data pipeline.
 
-9.	Deployment & DevOps:
-    a.	AWS ECS (Fargate)-> for container orchestration. Manages containerized workloads without managing servers.
-    b.	AWS CDK -> Infrastructure as Code (IaC). For automating AWS infrastructure provisioning
-    c.	AWS CloudWatch-> Tracks system performance, logs API requests, and traces transactions.
-    d.	AWS CodePipeline / Github action -> for Automating application deployment.
+9.  **Deployment & DevOps:**
+    * a.  AWS ECS (Fargate)-> for container orchestration. Manages containerized workloads without managing servers.
+    * b.  AWS CDK -> Infrastructure as Code (IaC). For automating AWS infrastructure provisioning
+    * c.  AWS CloudWatch-> Tracks system performance, logs API requests, and traces transactions.
+    * d.  AWS CodePipeline / Github action -> for Automating application deployment.
 
-10.	Security & Compliance:
-    a.	AWS IAM-> Manages permissions and security policies.
-    b.	AWS KMS -> Encrypt sensitive race data at rest and in transit.
-    c.	AWS WAF -> Protects against unauthorized access and attacks.
+10. **Security & Compliance:**
+    * a.  AWS IAM-> Manages permissions and security policies.
+    * b.  AWS KMS -> Encrypt sensitive race data at rest and in transit.
+    * c.  AWS WAF -> Protects against unauthorized access and attacks.
 
 *[TODO: Explain the technology stack to be used here]*
 
