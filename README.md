@@ -3,9 +3,6 @@
 ## 2. SQL 50 (MSSQL)
 
 The following is the base cost (No User). In serverless mode there is no base cost nearly 0 or 2 to 12 USD /month (because of some "alawys on"  Service).
-
-all pricing source: internet / aws price calculator 
--
 ### Core Service Cost
 
 | Service                     | Provisioned Type / Tier           | Monthly Base Cost (USD) | Reasoning                                                                 |
@@ -29,32 +26,31 @@ all pricing source: internet / aws price calculator
 
 | Infrastructure Service | Monthly Base Cost (USD) | Description                                                                 |
 |------------------------|--------------------------|-----------------------------------------------------------------------------|
-| **AWS IAM**            | $0.00                    | No cost for creating users, roles, policies.                               |
-| **AWS KMS**            | ~$1.00                   | $1/month per key, even if not used. Used for encrypting data at rest.      |
-| **AWS CodePipeline**   | ~$1.00                   | $1/month per active pipeline. First pipeline is free.                      |
-| **AWS CDK**            | $0.00                    | Free CLI/SDK tool. No runtime cost.                                        |
-| **AWS WAF**            | ~$5.00                   | $5/month per Web ACL + ~$1/rule/month (estimate based on 3 rules = $3).    |
-| **AWS CloudWatch**     | ~$2.00                   | Base monitoring + minimal logs (e.g., metrics retention and alerts).       |
+| AWS IAM                | $0.00                    | No cost for creating users, roles, policies.                               |
+| AWS KMS                | ~$1.00                   | $1/month per key, even if not used. Used for encrypting data at rest.      |
+| AWS CodePipeline       | ~$1.00                   | $1/month per active pipeline. First pipeline is free.                      |
+| AWS CDK                | $0.00                    | Free CLI/SDK tool. No runtime cost.                                        |
+| AWS WAF                | ~$5.00                   | $5/month per Web ACL + ~$1/rule/month (estimate based on 3 rules = $3).    |
+| AWS CloudWatch         | ~$2.00                   | Base monitoring + minimal logs (e.g., metrics retention and alerts).       |
 
 
 ### Cost Breakdown When Scaling Up (Monthly)
 
 Scenario: A race event with 50,000 concurrent viewers and 50 riders. This triggers higher compute, streaming, and data handling demand.
--
 
 ### Core Services (Application Specific)
 
 | Service                     | Scale-Up Unit                         | Monthly Scale-Up Cost |
 |-----------------------------|----------------------------------------|------------------------|
-| **AWS API Gateway**         | +5 million requests                    | **$17.50**             |
-| **AWS Lambda**              | +10 million requests                   | **$2.00**              |
-| **AWS AppSync**             | +2 million GraphQL operations          | **$32.00**             |
-| **AWS Fargate**             | +5 running tasks (720 hrs/task)        | **$146.40**            |
-| **AWS Kinesis Data Streams**| +2 shards                              | **$21.60**             |
-| **Amazon Aurora Serverless v2** | +2 ACUs for 20 hrs/day             | **$41.60** *(est.)*    |
-| **Amazon DynamoDB**         | +1 million read/write units            | **$3.00** *(est.)*     |
-| **AWS Timestream**          | +5 million writes/queries              | **$2.50** *(est.)*     |
-| **AWS S3**                  | +50 GB data stored/transferred         | **$1.25**              |
+| AWS API Gateway             | +5 million requests                    | **$17.50**             |
+| AWS Lambda                  | +10 million requests                   | **$2.00**              |
+| AWS AppSync                 | +2 million GraphQL operations          | **$32.00**             |
+| AWS Fargate                 | +5 running tasks (720 hrs/task)        | **$146.40**            |
+| AWS Kinesis Data Streams    | +2 shards                              | **$21.60**             |
+| Amazon Aurora Serverless v2 | +2 ACUs for 20 hrs/day                 | **$41.60** *(est.)*    |
+| Amazon DynamoDB             | +1 million read/write units            | **$3.00** *(est.)*     |
+| AWS Timestream              | +5 million writes/queries              | **$2.50** *(est.)*     |
+| AWS S3                      | +50 GB data stored/transferred         | **$1.25**              |
 
 ---
 
@@ -62,15 +58,16 @@ Scenario: A race event with 50,000 concurrent viewers and 50 riders. This trigge
 
 | Service                     | Scale-Up Unit                         | Monthly Scale-Up Cost |
 |-----------------------------|----------------------------------------|------------------------|
-| **Amazon CloudWatch Logs**  | Increased logging traffic              | **$5.00** *(est.)*     |
-| **AWS WAF**                 | +1M requests, 1 rule group             | **$1.00**              |
-| **AWS IAM**                 | Usage-based                            | **$0.00**              |
-| **AWS KMS**                 | +100K key requests                     | **$1.00** *(est.)*     |
+| Amazon CloudWatch Logs      | Increased logging traffic              | **$5.00** *(est.)*     |
+| AWS WAF                     | +1M requests, 1 rule group             | **$1.00**              |
+| AWS IAM                     | Usage-based                            | **$0.00**              |
+| AWS KMS                     | +100K key requests                     | **$1.00** *(est.)*     |
 
 
 ---
-
 ### **Total Estimated Additional Monthly Cost**: **~$273.85**
+
+##### Pricing source and reference: internet / aws price calculator
 
 
 
