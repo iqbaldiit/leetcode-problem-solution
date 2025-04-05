@@ -2,6 +2,7 @@
 ## 1. Introduction to pandas
 ## 2. SQL 50 (MSSQL)
 
+Base Cost (No User). In serverless mode there is no base cost nearly 0 or 2 to 12 USD /month (because of some infrua)
 
 | Service                     | Provisioned Type / Tier           | Monthly Base Cost (USD) | Reasoning                                                                 |
 |----------------------------|-----------------------------------|--------------------------|---------------------------------------------------------------------------|
@@ -19,4 +20,15 @@
 | AWS IAM / Secrets Manager  | 2 Secrets                         | ~$0.80                   | ~$0.40/month per secret stored.                                           |
 
 | **Total Estimated Base**   |                                   | **~$50.80 – $55.00**     | All provisioned with minimal specs; always-on even with no user activity.|
+
+
+| Infrastructure Service | Monthly Base Cost (USD) | Description                                                                 |
+|------------------------|--------------------------|-----------------------------------------------------------------------------|
+| **AWS IAM**            | $0.00                    | No cost for creating users, roles, policies.                               |
+| **AWS KMS**            | ~$1.00                   | $1/month per key, even if not used. Used for encrypting data at rest.      |
+| **AWS CodePipeline**   | ~$1.00                   | $1/month per active pipeline. First pipeline is free.                      |
+| **AWS CDK**            | $0.00                    | Free CLI/SDK tool. No runtime cost.                                        |
+| **AWS WAF**            | ~$5.00                   | $5/month per Web ACL + ~$1/rule/month (estimate based on 3 rules = $3).    |
+| **AWS CloudWatch**     | ~$2.00                   | Base monitoring + minimal logs (e.g., metrics retention and alerts).       |
+
 
