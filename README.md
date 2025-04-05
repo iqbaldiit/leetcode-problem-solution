@@ -41,19 +41,11 @@ This section outlines the major technical challenges anticipated for the system 
         * 4.2. Implement token-based authentication to securely verify user identities.
         * 4.3. Utilize role-based authorization to control access to different functionalities based on user roles, such as admin user, racer user, and spectator user.
         * 4.4. Encrypt sensitive data both at rest (stored in databases) and in transit (during network communication) to protect user information and system integrity.  
-    
-
-*[TODO: Please use this section to identify the biggest challenges that you see and solutions that you would implement for them]*
 
 ## Technical Decisions
 
 ### High Level Architecture Design
 The diagram belows shows the high level component diagram that could be used to fulfil the requirements.
-
-*[TODO: Please draw a high level architecture diagram and explain each component below]*
-
-![image](https://github.com/user-attachments/assets/513b2279-6158-4ef5-b4d1-7f986c15248e)
-
 
 ![High Level Architecture Diagram](/assets/diagram-placeholder.png)
 
@@ -132,10 +124,8 @@ On the basis of application context, technology familiarity of the organization,
     * b.  AWS KMS -> Encrypt sensitive race data at rest and in transit.
     * c.  AWS WAF -> Protects against unauthorized access and attacks.
 
-*[TODO: Explain the technology stack to be used here]*
-
 ## Runtime Cost Analysis
-*[Todo: Do the runtime cost analysis in this section]
+
 The following is the base cost (No User). In serverless mode there is no base cost nearly 0 or 2 to 12 USD /month (because of some "alawys on"  Service).
 ### Core Service Cost
 
