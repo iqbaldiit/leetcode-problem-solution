@@ -2,9 +2,10 @@
 ## 1. Introduction to pandas
 ## 2. SQL 50 (MSSQL)
 
-The following is the base cost (No User). In serverless mode there is no base cost nearly 0 or 2 to 12 USD /month (because of some "alawys on"  Service)
-all pricing source: internet / aws price calculator 
+The following is the base cost (No User). In serverless mode there is no base cost nearly 0 or 2 to 12 USD /month (because of some "alawys on"  Service).
 
+all pricing source: internet / aws price calculator 
+-
 ### Core Service Cost
 
 | Service                     | Provisioned Type / Tier           | Monthly Base Cost (USD) | Reasoning                                                                 |
@@ -39,9 +40,9 @@ all pricing source: internet / aws price calculator
 ### Cost Breakdown When Scaling Up (Monthly)
 
 Scenario: A race event with 50,000 concurrent viewers and 50 riders. This triggers higher compute, streaming, and data handling demand.
----
+-
 
-### 🔧 Core Services (Application Specific)
+### Core Services (Application Specific)
 
 | Service                     | Scale-Up Unit                         | Monthly Scale-Up Cost |
 |-----------------------------|----------------------------------------|------------------------|
@@ -53,6 +54,7 @@ Scenario: A race event with 50,000 concurrent viewers and 50 riders. This trigge
 | **Amazon Aurora Serverless v2** | +2 ACUs for 20 hrs/day             | **$41.60** *(est.)*    |
 | **Amazon DynamoDB**         | +1 million read/write units            | **$3.00** *(est.)*     |
 | **AWS Timestream**          | +5 million writes/queries              | **$2.50** *(est.)*     |
+| **AWS S3**                  | +50 GB data stored/transferred         | **$1.25**              |
 
 ---
 
@@ -61,7 +63,6 @@ Scenario: A race event with 50,000 concurrent viewers and 50 riders. This trigge
 | Service                     | Scale-Up Unit                         | Monthly Scale-Up Cost |
 |-----------------------------|----------------------------------------|------------------------|
 | **Amazon CloudWatch Logs**  | Increased logging traffic              | **$5.00** *(est.)*     |
-| **AWS S3**                  | +50 GB data stored/transferred         | **$1.25**              |
 | **AWS WAF**                 | +1M requests, 1 rule group             | **$1.00**              |
 | **AWS IAM**                 | Usage-based                            | **$0.00**              |
 | **AWS KMS**                 | +100K key requests                     | **$1.00** *(est.)*     |
