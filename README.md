@@ -5,46 +5,59 @@
 # Bicycle Racing Platform
 
 ## Biggest Challenges
-This section lists our the biggest technical challenges and their solutions.
 
-1.	Handling Concurrent user access in real time:   
-    a.	Challenges:
-        i.	As multiple races can be run simultaneously and infinite number of user both spectators and cyclists can be logged in, user concurrency is a biggest challenge and it should be 0 RTO.
-        ii.	Risk of API throttling, slow response times, and race data inconsistencies.
+This section outlines the major technical challenges anticipated for the system and the proposed solutions to address them.
 
-    b.	Solutions:
-        i.	Implement connection pooling and session management to optimize resource uses and rate limiting to prevent API abuse and backend performance. 
-        ii.	Unique namespace for each race and partitioning based on particular races. 
-        iii.	Use microservice architecture to isolate the service.
+### 1. Handling Concurrent User Access in Real Time
 
-2.	Real time tracking and latency
-    a.	Challenges:
-        i.	While racing, track racer (GPS, lap time) data needs to be processed and updated in <1 second. If there is any delay, user experience will suffer.
-        ii.	Consider minimum battery drain on mobile devices because, the race might be run for long time and device battery time is very important.
-    
-    b.	 Solutions:
-        i.	Use Device GPS to track racer positions and push data to the server. High throughput messaging ques to manage event process efficiently. Like AWS Kinesis data stream.
-        ii.	Use persistent connections and data synchronization using even driven communication for instant data updates like AWS AppSync.
-        iii.	Use SQLite database for temporary racing data so that if connectivity lost, data can be synced while connected.
-        iv.	Compress the data before transmit so that low connectivity can’t affect the transmission.
+**a. Challenges:**
 
-3.	High availability and fault tolerance 
-    a.	Challenges:
-        i.	The system should stay operational even if some components fail.
-        ii.	Avoid single point of failure in the architecture.
+* **i.** As multiple races can be run simultaneously, and an infinite number of users (both spectators and cyclists) can be logged in, user concurrency is a significant challenge requiring a Recovery Time Objective (RTO) of 0.
+* **ii.** Risk of API throttling, slow response times, and race data inconsistencies due to high concurrent load.
 
-    b.	Solutions:
-        i.	Design multi region deployments to ensure uptime and 0 RTO.
-        ii.	Implement automatic failover mechanisms. 
+**b. Solutions:**
 
-4.	 Security and Authentication
-    a.	Challenges:
-        i.	As lot of users will access concurrently, security and authentication is big challenges.
-    
-    b.	Solution:
-        i.	Use token-based authentication.
-        ii.	User Role based authorization like admin user, racer as user, spectator as user as the system requires. 
-        iii. Data can be encrypted at rest and in transit.
+* **i.** Implement connection pooling and session management to optimize resource utilization. Employ rate limiting strategies to prevent API abuse and maintain backend performance.
+* **ii.** Utilize unique namespaces for each race to isolate data. Implement data partitioning based on specific races to improve query performance and manage data scale.
+* **iii.** Adopt a microservice architecture to isolate different functionalities, enhancing scalability and resilience under high load.
+
+### 2. Real-time Tracking and Latency
+
+**a. Challenges:**
+
+* **i.** Tracked racer data (GPS, lap time) needs to be processed and updated in under 1 second during a race. Any delay will negatively impact the user experience.
+* **ii.** Minimizing battery drain on mobile devices is crucial, as races can be lengthy, and device battery life is critical for racers.
+
+**b. Solutions:**
+
+* **i.** Leverage device GPS for tracking racer positions and immediately push data to the server. Implement high-throughput messaging queues, such as AWS Kinesis Data Streams, to efficiently manage event processing.
+* **ii.** Establish persistent connections and utilize event-driven communication for instant data updates, potentially using services like AWS AppSync for real-time data synchronization.
+* **iii.** Employ an SQLite database on the mobile devices for temporary storage of racing data. This allows for data synchronization when network connectivity is restored, mitigating data loss during temporary outages.
+* **iv.** Compress data before transmission to reduce bandwidth usage and minimize the impact of low network connectivity on data delivery.
+
+### 3. High Availability and Fault Tolerance
+
+**a. Challenges:**
+
+* **i.** The system must remain operational even if individual components experience failures.
+* **ii.** The architecture should avoid any single point of failure to ensure continuous service availability.
+
+**b. Solutions:**
+
+* **i.** Design for multi-region deployments to provide redundancy and ensure uptime, aiming for a 0 RTO in case of regional failures.
+* **ii.** Implement automatic failover mechanisms to seamlessly switch to healthy instances or regions in the event of a component failure.
+
+### 4. Security and Authentication
+
+**a. Challenges:**
+
+* **i.** With a large number of concurrent users accessing the system, ensuring robust security and authentication is a significant challenge.
+
+**b. Solutions:**
+
+* **i.** Implement token-based authentication to securely verify user identities.
+* **ii.** Utilize role-based authorization to control access to different functionalities based on user roles, such as admin user, racer user, and spectator user.
+* **iii.** Encrypt sensitive data both at rest (stored in databases) and in transit (during network communication) to protect user information and system integrity.
   
     
 
