@@ -1,5 +1,5 @@
 --Source(mssql,mysql,pgsql):https://leetcode.com/problems/odd-and-even-transactions/solutions/6706894/simple-best-solution-by-iqbaldiit-wqjf/
---oracle:
+--oracle: https://leetcode.com/problems/odd-and-even-transactions/solutions/6710083/simple-best-solution-by-iqbaldiit-4l34/
 /*
 Table: transactions
 
