@@ -1,4 +1,5 @@
 ﻿--Source (mssql): https://leetcode.com/problems/first-letter-capitalization-ii/solutions/6713111/simple-best-solution-by-iqbaldiit-38bj/
+--Source (pgsql): https://leetcode.com/problems/first-letter-capitalization-ii/solutions/6729442/simple-best-solution-by-iqbaldiit-mpqb/
 /*
 	Table: user_content
 
