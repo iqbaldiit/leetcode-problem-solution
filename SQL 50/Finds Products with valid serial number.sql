@@ -1,4 +1,5 @@
 --Source (mssql):https://leetcode.com/problems/find-products-with-valid-serial-numbers/solutions/6732779/simple-best-solution-by-iqbaldiit-2bpp/
+--Source (pgSQL):https://leetcode.com/problems/find-products-with-valid-serial-numbers/solutions/6745654/simple-best-solution-by-iqbaldiit-a9y1/
 /*
 	Table: products
 
@@ -73,6 +74,12 @@ SELECT * FROM products
 WHERE description like '% SN[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9] %' 
 or description like 'SN[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9] %'
 or description like '% SN[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]' 
+
+-- --Solution (PostGreSQL)
+-- SELECT product_id, product_name, description
+-- FROM products
+-- WHERE description ~ '(^|[^A-Za-z])SN[0-9]{4}-[0-9]{4}([^0-9]|$)'
+-- ORDER BY product_id;
 
 
 --drop table
