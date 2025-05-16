@@ -81,6 +81,12 @@ or description like '% SN[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'
 -- WHERE description ~ '(^|[^A-Za-z])SN[0-9]{4}-[0-9]{4}([^0-9]|$)'
 -- ORDER BY product_id;
 
+-- --Solution (mySQL)
+-- SELECT product_id, product_name, description
+-- FROM products
+-- WHERE REGEXP_LIKE(description, '(^|[^A-Za-z])SN[0-9]{4}-[0-9]{4}([^0-9]|$)')
+-- ORDER BY product_id;
+
 
 --drop table
 DROP TABLE products
