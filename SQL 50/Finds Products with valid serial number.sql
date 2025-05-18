@@ -1,5 +1,7 @@
 --Source (mssql):https://leetcode.com/problems/find-products-with-valid-serial-numbers/solutions/6732779/simple-best-solution-by-iqbaldiit-2bpp/
 --Source (pgSQL):https://leetcode.com/problems/find-products-with-valid-serial-numbers/solutions/6745654/simple-best-solution-by-iqbaldiit-a9y1/
+--Source (mySQL):https://leetcode.com/problems/find-products-with-valid-serial-numbers/solutions/6748953/simple-best-solution/
+--Source (Oracle):https://leetcode.com/problems/find-products-with-valid-serial-numbers/solutions/6755742/simple-best-solution-by-iqbaldiit-fwzw/
 /*
 	Table: products
 
@@ -82,6 +84,12 @@ or description like '% SN[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'
 -- ORDER BY product_id;
 
 -- --Solution (mySQL)
+-- SELECT product_id, product_name, description
+-- FROM products
+-- WHERE REGEXP_LIKE(description, '(^|[^A-Za-z])SN[0-9]{4}-[0-9]{4}([^0-9]|$)')
+-- ORDER BY product_id;
+
+-- --Solution (Oracle)
 -- SELECT product_id, product_name, description
 -- FROM products
 -- WHERE REGEXP_LIKE(description, '(^|[^A-Za-z])SN[0-9]{4}-[0-9]{4}([^0-9]|$)')
