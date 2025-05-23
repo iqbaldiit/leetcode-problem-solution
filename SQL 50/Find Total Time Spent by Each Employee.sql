@@ -1,7 +1,7 @@
 --Source (MSSQL): https://leetcode.com/problems/find-total-time-spent-by-each-employee/solutions/6589997/simple-best-solution-by-iqbaldiit-u4bt/
 --Source (PGSQL): https://leetcode.com/problems/find-total-time-spent-by-each-employee/solutions/6590002/simple-best-solution-by-iqbaldiit-vs2i/
 --Source (MySQL): https://leetcode.com/problems/find-total-time-spent-by-each-employee/solutions/6589998/simple-best-solution-by-iqbaldiit-fvkf/
-
+--Source (oracle): https://leetcode.com/problems/find-total-time-spent-by-each-employee/solutions/6772898/simple-and-best-solution-by-iqbaldiit-0zef/
 /*
 	Table: Employees
 
@@ -73,6 +73,11 @@ GROUP BY event_day, emp_id
 --SELECT event_day AS Day, emp_id, SUM((out_time -in_time )) AS total_time 
 --FROM Employees
 --GROUP BY event_day, emp_id
+
+-- --Solution (Oracle)
+-- SELECT to_char(event_day,'YYYY-MM-DD') AS Day, emp_id, SUM((out_time -in_time )) AS total_time 
+-- FROM Employees
+-- GROUP BY event_day, emp_id
 
 --drop table
 DROP TABLE Employees
