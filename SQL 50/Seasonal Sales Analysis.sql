@@ -1,5 +1,6 @@
 --Source (MSSQL,MySQL) : https://leetcode.com/problems/seasonal-sales-analysis/solutions/6797583/simple-best-solution-by-iqbaldiit-cq0e/
 --Source (Oracle): https://leetcode.com/problems/seasonal-sales-analysis/solutions/6803300/simple-best-solution-by-iqbaldiit-1zk8/
+--Source (PGSQL): https://leetcode.com/problems/seasonal-sales-analysis/solutions/6806349/simple-best-solution-by-iqbaldiit-xegz/
 /*
 	Table: sales
 
