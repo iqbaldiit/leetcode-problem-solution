@@ -1,4 +1,4 @@
-
+--Source (MySQL,MSSQL): https://leetcode.com/problems/find-books-with-no-available-copies/solutions/6814323/simple-best-solution-by-iqbaldiit-18cs/
 /*
 	Table: library_books
 
