@@ -1,4 +1,4 @@
---Source (MySQL,MSSQL): https://leetcode.com/problems/find-books-with-no-available-copies/solutions/6814323/simple-best-solution-by-iqbaldiit-18cs/
+--Source (MySQL,MSSQL, Oracle): https://leetcode.com/problems/find-books-with-no-available-copies/solutions/6814323/simple-best-solution-by-iqbaldiit-18cs/
 /*
 	Table: library_books
 
@@ -112,7 +112,7 @@ INSERT INTO borrowing_records (record_id, book_id, borrower_name, borrow_date, r
 (7, 1, 'Grace Miller', '2024-02-05', NULL),(8, 6, 'Henry Taylor', '2024-01-12', NULL),(9, 2, 'Ivan Clark', '2024-02-12', NULL),
 (10, 2, 'Jane Adams', '2024-02-15', NULL);
 
-
+--Solution (MySQL,MSSQL,PGSQL,ORACLE)
 WITH borrow_book AS (
 	SELECT book_id,COUNT(*) AS current_borrowers FROM borrowing_records 
 	WHERE return_date IS NULL GROUP BY book_id
