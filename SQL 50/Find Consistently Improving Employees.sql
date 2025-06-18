@@ -1,4 +1,4 @@
-﻿--Source (MySQL, MSSQL): https://leetcode.com/problems/find-consistently-improving-employees/solutions/6841397/simple-best-solution-by-iqbaldiit-5zao/
+﻿--Source (MySQL, MSSQL, Oracle): https://leetcode.com/problems/find-consistently-improving-employees/solutions/6841397/simple-best-solution-by-iqbaldiit-5zao/
 /*
 	Table: employees
 
@@ -144,6 +144,7 @@ WITH ranked_review AS (
 ,last_three_review AS (
 	SELECT employee_id
 	,MAX(CASE WHEN rk=1 THEN rating END) AS last_rating
+	,MAX(CASE WHEN rk=2 THEN rating END) AS middle_rating
 	,MAX(CASE WHEN rk=3 THEN rating END) AS first_rating
  	FROM ranked_review WHERE rk<=3
 	GROUP BY employee_id
@@ -153,7 +154,7 @@ WITH ranked_review AS (
 	SELECT R.employee_id,E.name,R.last_rating-R.first_rating AS improvement_score 
 	FROM last_three_review R
 	INNER JOIN employees E ON R.employee_id=E.employee_id
-	WHERE first_rating IS NOT NULL
+	WHERE first_rating IS NOT NULL AND last_rating>middle_rating AND middle_rating>first_rating
 )
 SELECT * FROM qualified_employees WHERE improvement_score>0
 ORDER BY improvement_score DESC, name ASC
