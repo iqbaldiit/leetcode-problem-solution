@@ -1,4 +1,4 @@
-
+--Source (MySQL): https://leetcode.com/problems/find-covid-recovery-patients/solutions/6875306/simple-best-solution-by-iqbaldiit-bo6l/
 /*
 	Table: patients
 
