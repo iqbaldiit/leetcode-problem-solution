@@ -176,6 +176,30 @@ SELECT * FROM result ORDER BY recovery_time,patient_name
 --)
 --SELECT * FROM result ORDER BY recovery_time,patient_name
 
+-- --Solution (Oracle)
+-- WITH pos AS (
+--     SELECT patient_id, MIN(test_date) AS pos_date 
+--     FROM covid_tests 
+--     WHERE result = 'Positive' 
+--     GROUP BY patient_id
+-- ), 
+-- neg AS (
+--     SELECT CT.patient_id, pos.pos_date, MIN(CT.test_date) AS neg_date 
+--     FROM covid_tests CT 
+--     JOIN pos ON CT.patient_id = pos.patient_id 
+--     WHERE CT.result = 'Negative' AND CT.test_date > pos.pos_date 
+--     GROUP BY CT.patient_id, pos.pos_date
+-- ), 
+-- result AS (
+--     SELECT N.patient_id, P.patient_name, P.age, 
+--            CAST(N.neg_date - N.pos_date AS INTEGER) AS recovery_time
+--     FROM neg N 
+--     JOIN patients P ON P.patient_id = N.patient_id
+-- )
+-- SELECT * 
+-- FROM result 
+-- ORDER BY recovery_time, patient_name;
+
 
 /*
 Other test Case
