@@ -177,7 +177,7 @@ SELECT * FROM result ORDER BY recovery_time,patient_name
 --)
 --SELECT * FROM result ORDER BY recovery_time,patient_name
 
--- --Solution (Oracle)
+-- --Solution (Oracle, Oracle)
 -- WITH pos AS (
 --     SELECT patient_id, MIN(test_date) AS pos_date 
 --     FROM covid_tests 
