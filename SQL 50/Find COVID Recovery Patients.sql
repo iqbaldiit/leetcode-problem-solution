@@ -1,5 +1,6 @@
 --Source (MySQL): https://leetcode.com/problems/find-covid-recovery-patients/solutions/6875306/simple-best-solution-by-iqbaldiit-bo6l/
 --Source (MSSQL): https://leetcode.com/problems/find-covid-recovery-patients/solutions/6878867/simple-best-solution-by-iqbaldiit-h5if/
+--Source (Oracle): https://leetcode.com/problems/find-covid-recovery-patients/solutions/6882746/simple-best-solution-by-iqbaldiit-agwi/
 /*
 	Table: patients
 
