@@ -1,4 +1,4 @@
-
+--Source (MSSQL): https://leetcode.com/problems/find-category-recommendation-pairs/solutions/6914589/simple-best-solution-by-iqbaldiit-bbe7/
 /*
 	Table: ProductPurchases
 
