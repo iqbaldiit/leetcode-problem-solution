@@ -148,7 +148,7 @@ insert into ProductInfo (product_id, category, price) values ('202', 'Clothing',
 insert into ProductInfo (product_id, category, price) values ('301', 'Sports', '75')
 insert into ProductInfo (product_id, category, price) values ('401', 'Kitchen', '50');
 
---Solution(MSSQL) 
+--Solution (MSSQL) 
 
 WITH UserCategories AS (
     SELECT DISTINCT PP.user_id, P.category FROM ProductPurchases PP
