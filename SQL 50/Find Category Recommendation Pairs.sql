@@ -1,5 +1,5 @@
 --Source (MSSQL): https://leetcode.com/problems/find-category-recommendation-pairs/solutions/6914589/simple-best-solution-by-iqbaldiit-bbe7/
---Source (MySQL): https://leetcode.com/problems/find-category-recommendation-pairs/solutions/6918020/simple-best-solution-by-iqbaldiit-9x2m/
+--Source (MySQL, Oracle): https://leetcode.com/problems/find-category-recommendation-pairs/solutions/6918020/simple-best-solution-by-iqbaldiit-9x2m/
 /*
 	Table: ProductPurchases
 
