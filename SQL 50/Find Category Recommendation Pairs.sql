@@ -118,7 +118,7 @@
 CREATE TABLE ProductPurchases (user_id INT,product_id INT,quantity INT);
 CREATE TABLE  ProductInfo (product_id INT,category VARCHAR(100),price DECIMAL(10, 2));
 
---insert tables
+--insert product purchase tables
 insert into ProductPurchases (user_id, product_id, quantity) values ('1', '101', '2')
 insert into ProductPurchases (user_id, product_id, quantity) values ('1', '102', '1')
 insert into ProductPurchases (user_id, product_id, quantity) values ('1', '201', '3')
