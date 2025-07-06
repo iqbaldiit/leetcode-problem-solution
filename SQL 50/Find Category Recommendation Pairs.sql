@@ -140,7 +140,7 @@ insert into ProductPurchases (user_id, product_id, quantity) values ('5', '103',
 insert into ProductPurchases (user_id, product_id, quantity) values ('5', '201', '2')
 insert into ProductPurchases (user_id, product_id, quantity) values ('5', '202', '3')
 
-
+--insert product info table
 insert into ProductInfo (product_id, category, price) values ('101', 'Electronics', '100')
 insert into ProductInfo (product_id, category, price) values ('102', 'Books', '20')
 insert into ProductInfo (product_id, category, price) values ('103', 'Books', '35')
