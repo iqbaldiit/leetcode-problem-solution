@@ -1,4 +1,4 @@
---Source()
+--Source():https://leetcode.com/problems/find-product-recommendation-pairs/solutions/6933925/simple-best-solution/
 /*
 	Table: ProductPurchases
 
@@ -141,7 +141,7 @@ insert into ProductInfo (product_id, category, price) values ('103', 'Clothing',
 insert into ProductInfo (product_id, category, price) values ('104', 'Kitchen', '50')
 insert into ProductInfo (product_id, category, price) values ('105', 'Sports', '75');
 
---Solution () 
+--Solution (MySQL) 
 
 WITH UserProducts AS (
     SELECT DISTINCT PP.user_id,PP.product_id, P.category FROM ProductPurchases PP
