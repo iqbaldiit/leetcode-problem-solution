@@ -1,4 +1,4 @@
---Source():https://leetcode.com/problems/find-product-recommendation-pairs/solutions/6933925/simple-best-solution/
+--Source(MySQL):https://leetcode.com/problems/find-product-recommendation-pairs/solutions/6933925/simple-best-solution/
 /*
 	Table: ProductPurchases
 
