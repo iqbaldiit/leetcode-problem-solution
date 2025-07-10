@@ -142,7 +142,7 @@ insert into ProductInfo (product_id, category, price) values ('103', 'Clothing',
 insert into ProductInfo (product_id, category, price) values ('104', 'Kitchen', '50')
 insert into ProductInfo (product_id, category, price) values ('105', 'Sports', '75');
 
---Solution (MySQL, MSSQL) 
+--Solution (MySQL, MSSQL, Oracle, PgSQL) 
 
 WITH UserProducts AS (
     SELECT DISTINCT PP.user_id,PP.product_id, P.category FROM ProductPurchases PP
