@@ -21,6 +21,7 @@
 	| category    | varchar |
 	| price       | decimal |
 	+-------------+---------+
+
 	product_id is the unique identifier for this table.
 	Each row assigns a category and price to a product.
 	Amazon wants to understand shoPPng patterns across product categories. Write a solution to:
@@ -32,8 +33,6 @@
 	Return the result table of reportable category pairs ordered by customer_count in descending order, and in case of a tie, by category1 in ascending order lexicographically, and then by category2 in ascending order.
 
 	The result format is in the following example.
-
- 
 
 	Example:
 
