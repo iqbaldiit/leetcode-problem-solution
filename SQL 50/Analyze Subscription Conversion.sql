@@ -1,4 +1,4 @@
--- Source: https://leetcode.com/problems/analyze-subscription-conversion/	
+-- Source: https://leetcode.com/problems/analyze-subscription-conversion/solutions/6950307/simple-best-solution-by-iqbaldiit-za0c/
 	/*
 	Table: UserActivity
 
