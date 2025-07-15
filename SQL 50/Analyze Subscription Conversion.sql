@@ -1,4 +1,4 @@
--- Source (MySQL, MSSQL, Oracle): https://leetcode.com/problems/analyze-subscription-conversion/solutions/6950307/simple-best-solution-by-iqbaldiit-za0c/
+-- Source (MySQL, MSSQL, Oracle, PGSQL): https://leetcode.com/problems/analyze-subscription-conversion/solutions/6950307/simple-best-solution-by-iqbaldiit-za0c/
 	/*
 	Table: UserActivity
 
