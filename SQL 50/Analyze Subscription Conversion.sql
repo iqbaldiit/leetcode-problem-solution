@@ -114,7 +114,7 @@ insert into UserActivity (user_id, activity_date, activity_type, activity_durati
 insert into UserActivity (user_id, activity_date, activity_type, activity_duration) values ('4', '2023-04-05', 'paid', '45')
 insert into UserActivity (user_id, activity_date, activity_type, activity_duration) values ('4', '2023-04-07', 'cancelled', '0');
 
---Solution (MYSQL,MSSQL)
+--Solution (MYSQL,MSSQL, Oracle)
 WITH FreeTrial AS (
 	SELECT user_id, ROUND(AVG(activity_duration*1.00),2) AS trial_avg_duration FROM UserActivity WHERE activity_type='free_trial'
 	GROUP BY user_id
