@@ -174,32 +174,35 @@ insert into meetings (meeting_id, employee_id, meeting_date, meeting_type, durat
 insert into meetings (meeting_id, employee_id, meeting_date, meeting_type, duration_hours) values (47,2,'2023-07-23','Team',5.1);
 
 --Solution ()
-
-WITH hr_meeting as (
-SELECT employee_id , DATEPART(WEEK,meeting_date) as wk ,sum(duration_hours) as total_hours
-from meetings 
-GROUP BY employee_id , DATEPART(WEEK,meeting_date)
+WITH hr_meeting AS (
+SELECT employee_id, SUM(duration_hours) duration_total
+FROM meetings
+GROUP BY employee_id, DATEPART(WEEK,meeting_date), DATEPART(YEAR,meeting_date)
 )
-SELECT m.employee_id,employee_name,department,COUNT(*) as meeting_heavy_weeks FROM hr_meeting m
-INNER JOIN employees e ON e.employee_id=m.employee_id WHERE total_hours >20
-GROUP BY  m.employee_id ,e.employee_name ,e.department HAVING count(wk) >1 
-ORDER BY  meeting_heavy_weeks desc ,employee_name asc
+SELECT m.employee_id, e.employee_name, e.department, COUNT(m.employee_id) meeting_heavy_weeks 
+FROM hr_meeting m 
+INNER JOIN employees e ON m.employee_id = e.employee_id
+WHERE duration_total > 20
+GROUP BY m.employee_id, e.employee_name, e.department
+HAVING COUNT(m.employee_id) > 1
+ORDER BY meeting_heavy_weeks DESC, employee_name;
 
 
 
---Solution (MySQL)
---WITH hr_meeting AS (
---	SELECT employee_id,SUM(duration_hours) AS weekly_hours FROM meetings
---	GROUP BY employee_id,WEEK(meeting_date),YEAR(meeting_date) 
---	HAVING SUM(duration_hours)>=20
---), wk_meeting AS (
---	SELECT employee_id,COUNT(*) AS meeting_heavy_weeks  FROM hr_meeting
---	GROUP BY employee_id HAVING COUNT(*)>=2
---)
---SELECT  wk.employee_id,emp.employee_name,emp.department,wk.meeting_heavy_weeks
---FROM wk_meeting wk
---INNER JOIN employees emp ON wk.employee_id=emp.employee_id
---ORDER BY wk.meeting_heavy_weeks DESC, emp.employee_name ASC
+--Solution (PgSQL)
+-- WITH process_1 AS (
+-- SELECT employee_id, SUM(duration_hours) duration_total
+-- FROM meetings
+-- GROUP BY employee_id, date_part('week', meeting_date), date_part('year',meeting_date)
+-- )
+-- SELECT p.employee_id, e.employee_name, e.department, COUNT(p.employee_id) meeting_heavy_weeks 
+-- FROM process_1 p INNER JOIN employees e ON p.employee_id = e.employee_id
+-- WHERE duration_total > 20
+-- GROUP BY p.employee_id, e.employee_name, e.department
+-- HAVING COUNT(p.employee_id) > 1
+-- ORDER BY meeting_heavy_weeks DESC, employee_name;
+
+
 
 --drop tables
 DROP TABLE employees
