@@ -224,7 +224,7 @@ insert into inventory (inventory_id, store_id, product_name, quantity, price) va
 insert into inventory (inventory_id, store_id, product_name, quantity, price) values ('64','18','Ball','71','273.79')
 insert into inventory (inventory_id, store_id, product_name, quantity, price) values ('65','18','Chair','18','470.08');
 
---Solution (MySQL,MSSQL,Oracle,PgSQL)
+--Solution (MySQL, MSSQL, Oracle, PgSQL)
 
 WITH exp_product AS(
 	SELECT e.store_id, i.product_name AS most_exp_product,e.price, i.quantity FROM inventory i
