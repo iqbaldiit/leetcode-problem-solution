@@ -1,4 +1,4 @@
-﻿--Source (MySQL): https://leetcode.com/problems/find-stores-with-inventory-imbalance/solutions/7022428/simple-best-solution/
+﻿--Source (MySQL,MsSQL): https://leetcode.com/problems/find-stores-with-inventory-imbalance/solutions/7022428/simple-best-solution/
 /*
 	Table: stores
 
