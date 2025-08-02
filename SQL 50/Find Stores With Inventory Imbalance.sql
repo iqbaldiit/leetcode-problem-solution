@@ -1,4 +1,4 @@
-﻿--Source (MySQL,MsSQL, Oracle): https://leetcode.com/problems/find-stores-with-inventory-imbalance/solutions/7022428/simple-best-solution/
+﻿--Source (MySQL,MsSQL, Oracle, PgSQL): https://leetcode.com/problems/find-stores-with-inventory-imbalance/solutions/7022428/simple-best-solution/
 /*
 	Table: stores
 
