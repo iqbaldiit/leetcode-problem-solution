@@ -1,4 +1,5 @@
-﻿/*
+﻿--Source (MySQL): https://leetcode.com/problems/find-stores-with-inventory-imbalance/solutions/7022428/simple-best-solution/
+/*
 	Table: stores
 
 	+-------------+---------+
@@ -136,7 +137,7 @@ insert into inventory (inventory_id, store_id, product_name, quantity, price) va
 insert into inventory (inventory_id, store_id, product_name, quantity, price) values ('14', '5', 'Camera', '8', '599.99')
 insert into inventory (inventory_id, store_id, product_name, quantity, price) values ('15', '5', 'Lens', '12', '199.99');
 
---Solution ()
+--Solution (MySQL,MSSQL,Oracle,PgSQL)
 
 WITH exp_product AS(
 	SELECT e.store_id, i.product_name AS most_exp_product,e.price, i.quantity FROM inventory i
