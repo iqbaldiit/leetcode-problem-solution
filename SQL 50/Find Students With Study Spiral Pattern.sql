@@ -113,7 +113,7 @@ CREATE TABLE students (student_id INT,student_name VARCHAR(255),major VARCHAR(10
 CREATE TABLE study_sessions (session_id INT,student_id INT,subject VARCHAR(100),session_date DATE,hours_studied DECIMAL(4, 2));
 
 -- Insert Students tables
-Truncate table students
+--Truncate table students
 insert into students (student_id, student_name, major) values ('1', 'Alice Chen', 'Computer Science')
 insert into students (student_id, student_name, major) values ('2', 'Bob Johnson', 'Mathematics')
 insert into students (student_id, student_name, major) values ('3', 'Carol Davis', 'Physics')
@@ -121,7 +121,7 @@ insert into students (student_id, student_name, major) values ('4', 'David Wilso
 insert into students (student_id, student_name, major) values ('5', 'Emma Brown', 'Biology')
 
 -- Insert study_sessions tables
-Truncate table study_sessions
+--Truncate table study_sessions
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('1', '1', 'Math', '2023-10-01', '2.5')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('2', '1', 'Physics', '2023-10-02', '3.0')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('3', '1', 'Chemistry', '2023-10-03', '2.0')
