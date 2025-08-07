@@ -108,7 +108,7 @@ Emma Brown (student_id = 5): No study sessions recorded
 The result table is ordered by cycle_length in descending order, then by total_study_hours in descending order.
 */
 
---Create table
+----Create table
 CREATE TABLE students (student_id INT,student_name VARCHAR(255),major VARCHAR(100));
 CREATE TABLE study_sessions (session_id INT,student_id INT,subject VARCHAR(100),session_date DATE,hours_studied DECIMAL(4, 2));
 
