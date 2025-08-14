@@ -127,7 +127,7 @@ insert into study_sessions (session_id, student_id, subject, session_date, hours
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('3', '1', 'Chemistry', '2023-10-03', '2.0')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('4', '1', 'Math', '2023-10-04', '2.5')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('5', '1', 'Physics', '2023-10-05', '3.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('6', '1', 'Chemistry', '2023-10-06', '2.0')
+insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('6', '1', 'Chemistry', '2023-10-06', '2.0');
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('7', '2', 'Algebra', '2023-10-01', '4.0')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('8', '2', 'Calculus', '2023-10-02', '3.5')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('9', '2', 'Statistics', '2023-10-03', '2.5')
@@ -143,12 +143,31 @@ insert into study_sessions (session_id, student_id, subject, session_date, hours
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('19', '4', 'Organic', '2023-10-01', '3.0')
 insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('20', '4', 'Physical', '2023-10-05', '2.5');
 
---Solution (MSSQL)
+----Solution (MSSQL)
+--WITH sub_count AS (
+--	SELECT student_id, COUNT(DISTINCT subject) total_subject, SUM(hours_studied) total_study_hours FROM study_sessions GROUP BY student_id	
+--), con_session AS (
+--	SELECT student_id, session_date, 
+--	DATEDIFF(DAY,session_date, LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)) diff_date
+--	FROM study_sessions
+--)
+--SELECT sts.student_id, s.student_name, s.major, COUNT(DISTINCT sts.subject) cycle_length, MAX(pro.total_study_hours) total_study_hours
+--FROM study_sessions sts 
+--INNER JOIN sub_count pro ON sts.student_id = pro.student_id
+--INNER JOIN students s ON sts.student_id = s.student_id
+--INNER JOIN study_sessions ss ON sts.student_id = ss.student_id AND sts.subject = ss.subject AND sts.session_date < ss.session_date 
+--	AND DATEDIFF(DAY,sts.session_date,ss.session_date) BETWEEN pro.total_subject AND pro.total_subject * 2
+--WHERE EXISTS (SELECT 1 FROM con_session cs WHERE sts.student_id = cs.student_id AND sts.session_date = cs.session_date AND diff_date < 3)
+--GROUP BY sts.student_id, s.student_name, s.major
+--HAVING COUNT(DISTINCT sts.subject) > 2
+--ORDER BY cycle_length DESC, total_study_hours DESC
+
+--Solution (MySQL)
 WITH sub_count AS (
 	SELECT student_id, COUNT(DISTINCT subject) total_subject, SUM(hours_studied) total_study_hours FROM study_sessions GROUP BY student_id	
 ), con_session AS (
 	SELECT student_id, session_date, 
-	DATEDIFF(DAY,session_date, LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)) diff_date
+	LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)-session_date diff_date
 	FROM study_sessions
 )
 SELECT sts.student_id, s.student_name, s.major, COUNT(DISTINCT sts.subject) cycle_length, MAX(pro.total_study_hours) total_study_hours
@@ -156,7 +175,7 @@ FROM study_sessions sts
 INNER JOIN sub_count pro ON sts.student_id = pro.student_id
 INNER JOIN students s ON sts.student_id = s.student_id
 INNER JOIN study_sessions ss ON sts.student_id = ss.student_id AND sts.subject = ss.subject AND sts.session_date < ss.session_date 
-	AND DATEDIFF(DAY,sts.session_date,ss.session_date) BETWEEN pro.total_subject AND pro.total_subject * 2
+	AND ss.session_date-sts.session_date BETWEEN pro.total_subject AND pro.total_subject * 2
 WHERE EXISTS (SELECT 1 FROM con_session cs WHERE sts.student_id = cs.student_id AND sts.session_date = cs.session_date AND diff_date < 3)
 GROUP BY sts.student_id, s.student_name, s.major
 HAVING COUNT(DISTINCT sts.subject) > 2
