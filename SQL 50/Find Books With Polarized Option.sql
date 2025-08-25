@@ -1,3 +1,4 @@
+--Source (MSSQL): https://leetcode.com/problems/find-books-with-polarized-opinions/solutions/7113490/simple-best-solution-by-iqbaldiit-xlr8/
 /*
 	Table: books
 
@@ -165,6 +166,7 @@ FROM pol_op2 PP
 INNER JOIN books B ON PP.book_id=B.book_id
 WHERE PP.polarization_score>=0.6
 ORDER BY PP.polarization_score DESC, B.title DESC
+
 
 
 
