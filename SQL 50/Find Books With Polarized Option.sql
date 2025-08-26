@@ -1,4 +1,5 @@
 --Source (MSSQL): https://leetcode.com/problems/find-books-with-polarized-opinions/solutions/7113490/simple-best-solution-by-iqbaldiit-xlr8/
+--Source (MySQL) :https://leetcode.com/problems/find-books-with-polarized-opinions/solutions/7120365/simple-best-solution-by-iqbaldiit-b47o/ 
 /*
 	Table: books
 
@@ -146,7 +147,7 @@ insert into reading_sessions (session_id, book_id, reader_name, pages_read, sess
 insert into reading_sessions (session_id, book_id, reader_name, pages_read, session_rating) values ('19', '5', 'Sam', '80', '1')
 insert into reading_sessions (session_id, book_id, reader_name, pages_read, session_rating) values ('20', '5', 'Tara', '70', '2');
 
---Solution (MSSQL)
+--Solution (MSSQL, MySQL)
 WITH pol_op AS (
 	SELECT R.book_id,COUNT(R.session_rating) AS sr_count 
 	,MAX(R.session_rating) AS max_rating,MIN(R.session_rating) AS min_rating
