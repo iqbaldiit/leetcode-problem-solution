@@ -110,7 +110,7 @@ insert into customer_transactions (transaction_id, customer_id, transaction_date
 insert into customer_transactions (transaction_id, customer_id, transaction_date, amount, transaction_type) values ('17', '104', '2024-03-10', '280.0', 'purchase')
 insert into customer_transactions (transaction_id, customer_id, transaction_date, amount, transaction_type) values ('18', '104', '2024-03-15', '100.0', 'refund');
 
--- Solution ()
+-- Solution (MSSQL)
 
 WITH loyal_cus AS (
 	SELECT customer_id 
