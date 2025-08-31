@@ -1,3 +1,4 @@
+-- Source(MSSQL): https://leetcode.com/problems/find-loyal-customers/solutions/7130700/simple-best-solution-by-iqbaldiit-eys2/
 /*
 	Table: customer_transactions
 
@@ -110,12 +111,12 @@ insert into customer_transactions (transaction_id, customer_id, transaction_date
 insert into customer_transactions (transaction_id, customer_id, transaction_date, amount, transaction_type) values ('17', '104', '2024-03-10', '280.0', 'purchase')
 insert into customer_transactions (transaction_id, customer_id, transaction_date, amount, transaction_type) values ('18', '104', '2024-03-15', '100.0', 'refund');
 
--- Solution (MSSQL)
+---- Solution (MSSQL)
 
 WITH loyal_cus AS (
 	SELECT customer_id 
-	,SUM (CASE WHEN transaction_type='purchase' THEN 1 ELSE 0 END) pur_count
-	,SUM (CASE WHEN transaction_type='refund' THEN 1 ELSE 0 END) ref_count
+	,COUNT (CASE WHEN transaction_type='purchase' THEN 1 END) pur_count
+	,COUNT (CASE WHEN transaction_type='refund' THEN 1 END) ref_count
 	,MAX(transaction_date) AS max_date
 	,MIN(transaction_date) AS min_date
 	FROM customer_transactions
@@ -126,6 +127,23 @@ WHERE pur_count>2
 AND DATEDIFF(DAY,min_date,max_date)>29
 AND ref_count*1.00/(pur_count+ref_count)*1.00<0.2
 ORDER BY customer_id
+
+
+----Solution (MySQL)
+--WITH loyal_cus AS (
+--	SELECT customer_id 
+--	,COUNT(CASE WHEN transaction_type='purchase' THEN 1 END) pur_count
+--	,COUNT(CASE WHEN transaction_type='refund' THEN 1 END) ref_count
+--	,MAX(transaction_date) AS max_date
+--	,MIN(transaction_date) AS min_date
+--	FROM customer_transactions
+--	GROUP BY customer_id
+--)
+--SELECT customer_id FROM loyal_cus
+--WHERE pur_count>2
+--AND DATEDIFF(max_date,min_date)>29
+--AND ref_count*1.00/(pur_count+ref_count)*1.00<0.2
+--ORDER BY customer_id
 
 --DROP Table
 DROP TABLE customer_transactions
