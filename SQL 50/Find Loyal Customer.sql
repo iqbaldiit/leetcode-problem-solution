@@ -1,4 +1,5 @@
 -- Source(MSSQL): https://leetcode.com/problems/find-loyal-customers/solutions/7130700/simple-best-solution-by-iqbaldiit-eys2/
+-- Source (MySQL) : https://leetcode.com/problems/find-loyal-customers/solutions/7140419/simple-best-solution-by-iqbaldiit-djq0/
 /*
 	Table: customer_transactions
 
