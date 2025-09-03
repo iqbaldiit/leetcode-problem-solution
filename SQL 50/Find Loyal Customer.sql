@@ -1,6 +1,6 @@
 -- Source(MSSQL): https://leetcode.com/problems/find-loyal-customers/solutions/7130700/simple-best-solution-by-iqbaldiit-eys2/
 -- Source (MySQL) : https://leetcode.com/problems/find-loyal-customers/solutions/7140419/simple-best-solution-by-iqbaldiit-djq0/
--- Source (PostGreSQL): https://leetcode.com/problems/find-loyal-customers/solutions/7143493/simple-best-solution-by-iqbaldiit-atw8/
+-- Source (PostGreSQL, Oracle): https://leetcode.com/problems/find-loyal-customers/solutions/7143493/simple-best-solution-by-iqbaldiit-atw8/
 /*
 	Table: customer_transactions
 
@@ -146,7 +146,7 @@ ORDER BY customer_id
 --AND ref_count*1.00/(pur_count+ref_count)*1.00<0.2
 --ORDER BY customer_id
 
-----Solution (PostGreSQL)
+----Solution (PostGreSQL, Oracle)
 --WITH loyal_cus AS (
 --	SELECT customer_id 
 --	,COUNT(CASE WHEN transaction_type='purchase' THEN 1 END) pur_count
