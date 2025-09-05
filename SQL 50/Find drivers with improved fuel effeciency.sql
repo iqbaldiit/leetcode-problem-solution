@@ -123,25 +123,33 @@ insert into trips (trip_id, driver_id, trip_date, distance_km, fuel_consumed) va
 
 --Solution
 --SELECT * FROM drivers
-SELECT * FROM trips WHERE driver_id=1;
+--SELECT * FROM trips WHERE driver_id=1;
+
 WITH driver_effeciency AS (
+	SELECT driver_id	
+	, (distance_km*1.00 / fuel_consumed) AS efficiency	
+	, CASE WHEN MONTH(trip_date) BETWEEN 1 AND 6 THEN 1 ELSE 2 END AS half_year	
+	FROM trips 	
+), driver_effeciency_avg AS (
+	SELECT driver_id,half_year
+	,AVG(efficiency) avg_effeciency
+	FROM driver_effeciency DE 
+	GROUP BY driver_id,half_year
+), final_result AS (
 	SELECT driver_id
-	, SUM(distance_km / fuel_consumed) AS fuel_efficiency
-	, AVG(CASE WHEN MONTH(trip_date) BETWEEN 1 AND 6 THEN distance_km / fuel_consumed ELSE 0 END) AS first_half_avg
-	, AVG(CASE WHEN MONTH(trip_date) BETWEEN 7 AND 12 THEN distance_km / fuel_consumed ELSE 0 END) AS second_half_avg
-	, COUNT(CASE WHEN MONTH(trip_date) BETWEEN 1 AND 6 THEN 1 END) AS first_half
-	, COUNT(CASE WHEN MONTH(trip_date) BETWEEN 7 AND 12 THEN 1 END) AS second_half
-	FROM trips 
+	, SUM(CASE WHEN half_year=1 THEN avg_effeciency ELSE 0 END) AS first_half_avg
+	, SUM(CASE WHEN half_year=2 THEN avg_effeciency ELSE 0 END) AS second_half_avg
+	FROM driver_effeciency_avg	
 	GROUP BY driver_id
 )
-SELECT DE.driver_id
-,D.driver_name
-,ROUND(DE.first_half_avg,2) first_half_avg
-,ROUND(DE.second_half_avg,2) second_half_avg
-,ROUND(DE.second_half_avg-DE.first_half_avg,2) AS efficiency_improvement
-FROM driver_effeciency DE 
-INNER JOIN drivers D ON DE.driver_id=D.driver_id
-WHERE DE.first_half>0 AND DE.second_half>0
+SELECT F.driver_id,D.driver_name
+,ROUND(F.first_half_avg,2) AS first_half_avg
+,ROUND(F.second_half_avg,2) AS second_half_avg
+,ROUND(F.second_half_avg-F.first_half_avg,2) AS efficiency_improvement
+FROM final_result F
+INNER JOIN drivers D ON F.driver_id=D.driver_id
+WHERE first_half_avg>0 AND second_half_avg>0 AND ROUND(F.second_half_avg-F.first_half_avg,2)>0
+ORDER BY efficiency_improvement DESC, driver_name ASC
 
 --drop table
 DROP TABLE drivers
