@@ -1,3 +1,4 @@
+--Source (MsSQL) : https://leetcode.com/problems/find-drivers-with-improved-fuel-efficiency/solutions/7157300/simple-best-solution-by-iqbaldiit-vwc7/
 /*
 	Table: drivers
 
@@ -121,10 +122,7 @@ insert into trips (trip_id, driver_id, trip_date, distance_km, fuel_consumed) va
 insert into trips (trip_id, driver_id, trip_date, distance_km, fuel_consumed) values ('11', '4', '2023-11-30', '140.0', '11.0')
 insert into trips (trip_id, driver_id, trip_date, distance_km, fuel_consumed) values ('12', '5', '2023-02-28', '110.0', '11.5');
 
---Solution
---SELECT * FROM drivers
---SELECT * FROM trips WHERE driver_id=1;
-
+--Solution (MSSQL)
 WITH driver_effeciency AS (
 	SELECT driver_id	
 	, (distance_km*1.00 / fuel_consumed) AS efficiency	
