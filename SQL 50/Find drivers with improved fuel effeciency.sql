@@ -1,6 +1,6 @@
 --Source (MsSQL) : https://leetcode.com/problems/find-drivers-with-improved-fuel-efficiency/solutions/7157300/simple-best-solution-by-iqbaldiit-vwc7/
 --Source (MySQL) : https://leetcode.com/problems/find-drivers-with-improved-fuel-efficiency/solutions/7161299/simple-best-solution-by-iqbaldiit-7xpj/
---Source (PostGreSQL) : https://leetcode.com/problems/find-drivers-with-improved-fuel-efficiency/solutions/7168120/simple-best-solution-by-iqbaldiit-15js/
+--Source (PostGreSQL,Oracle) : https://leetcode.com/problems/find-drivers-with-improved-fuel-efficiency/solutions/7168120/simple-best-solution-by-iqbaldiit-15js/
 /*
 	Table: drivers
 
@@ -152,7 +152,7 @@ WHERE first_half_avg>0 AND second_half_avg>0 AND ROUND(F.second_half_avg-F.first
 ORDER BY efficiency_improvement DESC, driver_name ASC
 
 
-----Solution (PostGreSQL)
+----Solution (PostGreSQL, Oracle)
 -- WITH driver_effeciency AS (
 -- 	SELECT driver_id	
 -- 	, (distance_km*1.00 / fuel_consumed) AS efficiency	
