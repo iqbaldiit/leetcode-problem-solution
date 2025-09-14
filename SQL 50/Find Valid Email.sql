@@ -1,5 +1,6 @@
 --Source (MySQL): https://leetcode.com/problems/find-valid-emails/solutions/7182535/simple-best-solution/
---Source (PostGreSQL, Oracle):https://leetcode.com/problems/find-valid-emails/solutions/7188221/simple-best-solution-by-iqbaldiit-af23/
+--Source (Oracle):https://leetcode.com/problems/find-valid-emails/solutions/7188221/simple-best-solution-by-iqbaldiit-af23/
+--Source (PostgreSQL): https://leetcode.com/problems/find-valid-emails/solutions/7185999/simple-best-solution/
 /*
 	Table: Users
 
