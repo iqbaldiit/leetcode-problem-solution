@@ -78,3 +78,9 @@ WHERE email LIKE '%@%.com'
   AND LEFT(email, CHARINDEX('@', email) - 1) NOT LIKE '%[^a-zA-Z0-9_]%'
   AND SUBSTRING(email, CHARINDEX('@', email) + 1, LEN(email) - CHARINDEX('@', email) - 4) NOT LIKE '%[^a-zA-Z]%'
 ORDER BY user_id;
+
+-- --Solution (PostgreeSQL, Oracle)
+-- SELECT user_id, email
+-- FROM Users
+-- WHERE REGEXP_LIKE(email, '^[a-zA-Z0-9_]+@[a-zA-Z]+\.com$')
+-- ORDER BY user_id;
