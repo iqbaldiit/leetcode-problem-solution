@@ -1,6 +1,7 @@
 -- Source (MSSQL): https://leetcode.com/problems/find-zombie-sessions/solutions/7188132/simple-best-solution-by-iqbaldiit-4brm/ 
 -- Source (MySQL): https://leetcode.com/problems/find-zombie-sessions/solutions/7191202/simple-best-solution-by-iqbaldiit-mbxr/
-0-- Source (Oracle): https://leetcode.com/problems/find-zombie-sessions/solutions/7198155/simple-best-solution-by-iqbaldiit-xcwz/
+-- Source (Oracle): https://leetcode.com/problems/find-zombie-sessions/solutions/7198155/simple-best-solution-by-iqbaldiit-xcwz/
+-- Source (PostgreSQL): https://leetcode.com/problems/find-zombie-sessions/solutions/7195748/simple-best-solution/
 
 /*
 	Table: app_events
