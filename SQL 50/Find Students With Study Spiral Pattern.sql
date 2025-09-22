@@ -162,24 +162,24 @@ insert into study_sessions (session_id, student_id, subject, session_date, hours
 --HAVING COUNT(DISTINCT sts.subject) > 2
 --ORDER BY cycle_length DESC, total_study_hours DESC
 
---Solution (MySQL)
-WITH sub_count AS (
-	SELECT student_id, COUNT(DISTINCT subject) total_subject, SUM(hours_studied) total_study_hours FROM study_sessions GROUP BY student_id	
-), con_session AS (
-	SELECT student_id, session_date, 
-	LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)-session_date diff_date
-	FROM study_sessions
-)
-SELECT sts.student_id, s.student_name, s.major, COUNT(DISTINCT sts.subject) cycle_length, MAX(pro.total_study_hours) total_study_hours
-FROM study_sessions sts 
-INNER JOIN sub_count pro ON sts.student_id = pro.student_id
-INNER JOIN students s ON sts.student_id = s.student_id
-INNER JOIN study_sessions ss ON sts.student_id = ss.student_id AND sts.subject = ss.subject AND sts.session_date < ss.session_date 
-	AND ss.session_date-sts.session_date BETWEEN pro.total_subject AND pro.total_subject * 2
-WHERE EXISTS (SELECT 1 FROM con_session cs WHERE sts.student_id = cs.student_id AND sts.session_date = cs.session_date AND diff_date < 3)
-GROUP BY sts.student_id, s.student_name, s.major
-HAVING COUNT(DISTINCT sts.subject) > 2
-ORDER BY cycle_length DESC, total_study_hours DESC
+----Solution (MySQL)
+--WITH sub_count AS (
+--	SELECT student_id, COUNT(DISTINCT subject) total_subject, SUM(hours_studied) total_study_hours FROM study_sessions GROUP BY student_id	
+--), con_session AS (
+--	SELECT student_id, session_date, 
+--	LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)-session_date diff_date
+--	FROM study_sessions
+--)
+--SELECT sts.student_id, s.student_name, s.major, COUNT(DISTINCT sts.subject) cycle_length, MAX(pro.total_study_hours) total_study_hours
+--FROM study_sessions sts 
+--INNER JOIN sub_count pro ON sts.student_id = pro.student_id
+--INNER JOIN students s ON sts.student_id = s.student_id
+--INNER JOIN study_sessions ss ON sts.student_id = ss.student_id AND sts.subject = ss.subject AND sts.session_date < ss.session_date 
+--	AND ss.session_date-sts.session_date BETWEEN pro.total_subject AND pro.total_subject * 2
+--WHERE EXISTS (SELECT 1 FROM con_session cs WHERE sts.student_id = cs.student_id AND sts.session_date = cs.session_date AND diff_date < 3)
+--GROUP BY sts.student_id, s.student_name, s.major
+--HAVING COUNT(DISTINCT sts.subject) > 2
+--ORDER BY cycle_length DESC, total_study_hours DESC
 
 --Drop table
 DROP TABLE students
