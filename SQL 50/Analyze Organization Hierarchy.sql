@@ -1,5 +1,5 @@
 --Source (MsSQL): https://leetcode.com/problems/analyze-organization-hierarchy/solutions/7222035/simple-best-solution-by-iqbaldiit-tb2k/
---Source (MySQL, PostGreSQL): https://leetcode.com/problems/analyze-organization-hierarchy/solutions/7222032/simple-best-solution-by-iqbaldiit-mgnn/
+--Source (MySQL,PostGreSQL): https://leetcode.com/problems/analyze-organization-hierarchy/solutions/7222032/simple-best-solution-by-iqbaldiit-mgnn/
 /*
 	Table: Employees
 
