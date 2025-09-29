@@ -168,7 +168,7 @@ JOIN Aggregates a ON h.employee_id = a.employee_id
 ORDER BY h.level ASC, a.budget DESC, h.employee_name ASC;
 
 ----Solution (MySQL, PostGreSQL)
---WITH Hierarchy AS (
+--WITH RECURSIVE Hierarchy AS (
 --    SELECT 
 --        employee_id,
 --        employee_name,
