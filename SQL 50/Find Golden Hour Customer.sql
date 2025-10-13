@@ -129,7 +129,7 @@ insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amo
 insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amount, payment_method, order_rating) values ('15', '105', '2024-03-02 13:00:00', '35.5', 'app', '5')
 insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amount, payment_method, order_rating) values ('16', '105', '2024-03-03 11:45:00', '28.0', 'card', '4');
 
---Solution
+--Solution (MSSQL)
 WITH order_sum AS (
 	SELECT customer_id
 	, COUNT(*) AS total_orders
