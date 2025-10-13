@@ -130,8 +130,6 @@ insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amo
 insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amount, payment_method, order_rating) values ('16', '105', '2024-03-03 11:45:00', '28.0', 'card', '4');
 
 --Solution
-SELECT * FROM restaurant_orders;
-
 WITH order_sum AS (
 	SELECT customer_id
 	, COUNT(*) AS total_orders
@@ -139,15 +137,20 @@ WITH order_sum AS (
 					OR (DATEPART(HOUR,order_timestamp) BETWEEN 18 AND 20) 
 		THEN 1 ELSE 0 END) AS peak_total
 	,COUNT(order_rating) rated_orders
-	,AVG(order_rating) avg_rating
+	,ROUND(AVG(order_rating*1.00),2) average_rating
 	FROM restaurant_orders
 	GROUP BY customer_id
 )
-SELECT R.customer_id, O.total_orders, ROUND((peak_total*1.00/total_orders*1.00)*100,2) AS peak_hour_percentage
-,O.avg_rating
+SELECT O.customer_id, O.total_orders, ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,0) AS peak_hour_percentage
+,O.average_rating
 FROM order_sum O
-INNER JOIN restaurant_orders R ON O.customer_id=R.customer_id
 WHERE O.total_orders>=3
+AND O.average_rating>=4
+AND ROUND((O.rated_orders*1.00/O.total_orders*1.00)*100,2)>=50
+AND ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,2)>=60
+ORDER BY O.average_rating DESC,O.customer_id DESC 
+
+
 
 --DROP table
 DROP TABLE restaurant_orders
