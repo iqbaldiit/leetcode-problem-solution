@@ -1,4 +1,5 @@
-﻿/*
+﻿--Source (MSSQL):https://leetcode.com/problems/find-golden-hour-customers/solutions/7271768/simple-best-solution-by-iqbaldiit-cj9u/ 
+/*
 	Table: restaurant_orders
 
 	+------------------+----------+
@@ -101,17 +102,9 @@
 */
 
 --Create table
-CREATE TABLE restaurant_orders (
-    order_id INT,
-    customer_id INT,
-    order_timestamp DATETIME,
-    order_amount DECIMAL(10,2),
-    payment_method VARCHAR(10),
-    order_rating INT
-)
+CREATE TABLE restaurant_orders (order_id INT,customer_id INT,order_timestamp DATETIME,order_amount DECIMAL(10,2),payment_method VARCHAR(10),order_rating INT)
 
 --insert data
-
 insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amount, payment_method, order_rating) values ('1', '101', '2024-03-01 12:30:00', '25.5', 'card', '5')
 insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amount, payment_method, order_rating) values ('2', '101', '2024-03-02 19:15:00', '32.0', 'app', '4')
 insert into restaurant_orders (order_id, customer_id, order_timestamp, order_amount, payment_method, order_rating) values ('3', '101', '2024-03-03 13:45:00', '28.75', 'card', '5')
@@ -149,8 +142,6 @@ AND O.average_rating>=4
 AND ROUND((O.rated_orders*1.00/O.total_orders*1.00)*100,2)>=50
 AND ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,2)>=60
 ORDER BY O.average_rating DESC,O.customer_id DESC 
-
-
 
 --DROP table
 DROP TABLE restaurant_orders
