@@ -1,4 +1,5 @@
 ﻿--Source (MSSQL):https://leetcode.com/problems/find-golden-hour-customers/solutions/7271768/simple-best-solution-by-iqbaldiit-cj9u/ 
+--Source (MySQL):https://leetcode.com/problems/find-golden-hour-customers/solutions/7273604/simple-best-solution-by-iqbaldiit-1hox/
 /*
 	Table: restaurant_orders
 
