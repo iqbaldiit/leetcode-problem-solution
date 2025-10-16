@@ -165,7 +165,7 @@ ORDER BY O.average_rating DESC,O.customer_id DESC
 --AND ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,2)>=60
 --ORDER BY O.average_rating DESC,O.customer_id DESC
 
---Solution ()
+--Solution (PostgreSQL)
 WITH order_sum AS (
 	SELECT customer_id
 	, COUNT(*) AS total_orders
