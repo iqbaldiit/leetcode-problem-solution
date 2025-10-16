@@ -165,5 +165,26 @@ ORDER BY O.average_rating DESC,O.customer_id DESC
 --AND ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,2)>=60
 --ORDER BY O.average_rating DESC,O.customer_id DESC
 
+--Solution ()
+WITH order_sum AS (
+	SELECT customer_id
+	, COUNT(*) AS total_orders
+	,SUM(CASE WHEN ((EXTRACT (HOUR FROM order_timestamp)) BETWEEN 11 AND 13)
+					OR ((EXTRACT (HOUR FROM order_timestamp)) BETWEEN 18 AND 20) 
+		THEN 1 ELSE 0 END) AS peak_total
+	,COUNT(order_rating) rated_orders
+	,ROUND(AVG(order_rating*1.00),2) average_rating
+	FROM restaurant_orders
+	GROUP BY customer_id
+)
+SELECT O.customer_id, O.total_orders, ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,0) AS peak_hour_percentage
+,O.average_rating
+FROM order_sum O
+WHERE O.total_orders>=3
+AND O.average_rating>=4
+AND ROUND((O.rated_orders*1.00/O.total_orders*1.00)*100,2)>=50
+AND ROUND((O.peak_total*1.00/O.total_orders*1.00)*100,2)>=60
+ORDER BY O.average_rating DESC,O.customer_id DESC
+
 --DROP table
 DROP TABLE restaurant_orders
