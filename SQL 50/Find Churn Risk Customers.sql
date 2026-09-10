@@ -220,5 +220,6 @@ FROM active_users
 ORDER BY days_as_subscriber DESC, user_id ASC;
 
 
+
 DROP TABLE subscription_events
 
