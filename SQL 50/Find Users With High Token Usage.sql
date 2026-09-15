@@ -90,7 +90,7 @@ VALUES
     (3, 'Optimize Python code', 220);
 GO
 
---3. Solution (MSSQL)
+--3. Solution (MSSQL,MySQL,PostgresSQL)
 SELECT * FROM prompts;
 
 WITH tbl_summary AS (
@@ -100,6 +100,7 @@ WITH tbl_summary AS (
 SELECT user_id,prompt_count,avg_tokens FROM tbl_summary 
 WHERE prompt_count>=3 AND max_token>avg_tokens
 ORDER BY avg_tokens DESC, user_id ASC
+
 
 
 --4. Drop Table
