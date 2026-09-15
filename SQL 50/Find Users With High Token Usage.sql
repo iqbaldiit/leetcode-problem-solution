@@ -90,7 +90,7 @@ VALUES
     (3, 'Optimize Python code', 220);
 GO
 
---3. Solution (MSSQL,MySQL,PostgresSQL)
+--3. Solution (MSSQL, MySQL, PostgresSQL)
 SELECT * FROM prompts;
 
 WITH tbl_summary AS (
