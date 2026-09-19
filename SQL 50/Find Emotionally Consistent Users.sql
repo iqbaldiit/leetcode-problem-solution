@@ -103,7 +103,7 @@ INSERT INTO reactions (user_id, content_id, reaction) VALUES
 (3, 304, 'love'),
 (3, 305, 'love');
 
---Solutions
+--Solutions (MSSQL,PostGresSQL, MySQL)
 SELECT * FROM reactions
 
 ;WITH tbl_total_reaction AS(
