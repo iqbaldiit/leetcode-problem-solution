@@ -78,7 +78,6 @@
 	The Results table is ordered by reaction_ratio in descending order, then by user_id in ascending order.
 */
 
-
 CREATE TABLE reactions (
     user_id INT,
     content_id INT,
