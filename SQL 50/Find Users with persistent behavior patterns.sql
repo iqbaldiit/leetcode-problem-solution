@@ -181,8 +181,7 @@ INSERT INTO activity (user_id, action_date, action) VALUES
 (11, '2024-01-10', 'view'),
 (11, '2024-01-11', 'view');
 
---solution
-SELECT * FROM activity WHERE user_id=2;
+--solution (MSSQL)
 
 WITH tbl_lead AS (
 SELECT *
