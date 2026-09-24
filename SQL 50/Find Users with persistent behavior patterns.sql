@@ -186,7 +186,7 @@ SELECT * FROM activity WHERE user_id=2;
 
 WITH tbl_lead AS (
 SELECT *
-, LEAD(action_date) OVER (PARTITION BY user_id,action ORDER BY user_id,action) AS next_date
+, LEAD(action_date) OVER (PARTITION BY user_id,action ORDER BY user_id,action,action_date) AS next_date
 , COUNT(action) OVER (PARTITION BY user_id,action_date) AS action_count
 FROM activity 
 )
@@ -199,8 +199,4 @@ GROUP BY user_id,action
 HAVING SUM(DATEDIFF(DAY,action_date,next_date))+1>=5
 ORDER BY streak_length DESC, user_id ASC
 
---SELECT * 
---,(DATEDIFF(DAY,action_date,next_date))+1 AS streak_length 
---FROM tbl_lead WHERE DATEDIFF(DAY,action_date,next_date)=1
--- drop  table
 DROP TABLE activity
