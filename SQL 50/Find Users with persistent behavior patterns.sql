@@ -198,4 +198,21 @@ GROUP BY user_id,action
 HAVING SUM(DATEDIFF(DAY,action_date,next_date))+1>=5
 ORDER BY streak_length DESC, user_id ASC
 
+
+-- Solution (PostGres)
+--WITH tbl_lead AS (
+--SELECT *
+--, LEAD(action_date) OVER (PARTITION BY user_id,action ORDER BY user_id,action,action_date) AS next_date
+--, COUNT(action) OVER (PARTITION BY user_id,action_date) AS action_count
+--FROM activity
+--)
+--SELECT user_id,action
+--,SUM(EXTRACT(DAY FROM AGE(next_date,action_date)))+1 AS streak_length 
+--,MIN(action_date) start_date
+--,MAX(next_date) end_date
+--FROM tbl_lead WHERE action_count=1 AND EXTRACT(DAY FROM AGE(next_date,action_date))=1
+--GROUP BY user_id,action
+--HAVING SUM(EXTRACT(DAY FROM AGE(next_date,action_date)))+1>=5
+--ORDER BY streak_length DESC, user_id ASC;
+
 DROP TABLE activity
