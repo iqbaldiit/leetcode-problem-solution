@@ -1,4 +1,5 @@
 -- Source(MSSQL) : https://leetcode.com/problems/find-users-with-persistent-behavior-patterns/solutions/8537763/simple-best-solution-by-iqbaldiit-rd18/
+-- Source (Postgress) : https://leetcode.com/problems/find-users-with-persistent-behavior-patterns/solutions/8537836/simple-best-solution-by-iqbaldiit-oucr/
 /*
 	Table: activity
 
