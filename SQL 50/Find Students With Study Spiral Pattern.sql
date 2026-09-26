@@ -112,74 +112,150 @@ The result table is ordered by cycle_length in descending order, then by total_s
 CREATE TABLE students (student_id INT,student_name VARCHAR(255),major VARCHAR(100));
 CREATE TABLE study_sessions (session_id INT,student_id INT,subject VARCHAR(100),session_date DATE,hours_studied DECIMAL(4, 2));
 
--- Insert Students tables
---Truncate table students
-insert into students (student_id, student_name, major) values ('1', 'Alice Chen', 'Computer Science')
-insert into students (student_id, student_name, major) values ('2', 'Bob Johnson', 'Mathematics')
-insert into students (student_id, student_name, major) values ('3', 'Carol Davis', 'Physics')
-insert into students (student_id, student_name, major) values ('4', 'David Wilson', 'Chemistry')
-insert into students (student_id, student_name, major) values ('5', 'Emma Brown', 'Biology')
+---- Insert Students tables
+----Truncate table students
+--insert into students (student_id, student_name, major) values ('1', 'Alice Chen', 'Computer Science')
+--insert into students (student_id, student_name, major) values ('2', 'Bob Johnson', 'Mathematics')
+--insert into students (student_id, student_name, major) values ('3', 'Carol Davis', 'Physics')
+--insert into students (student_id, student_name, major) values ('4', 'David Wilson', 'Chemistry')
+--insert into students (student_id, student_name, major) values ('5', 'Emma Brown', 'Biology')
 
--- Insert study_sessions tables
---Truncate table study_sessions
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('1', '1', 'Math', '2023-10-01', '2.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('2', '1', 'Physics', '2023-10-02', '3.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('3', '1', 'Chemistry', '2023-10-03', '2.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('4', '1', 'Math', '2023-10-04', '2.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('5', '1', 'Physics', '2023-10-05', '3.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('6', '1', 'Chemistry', '2023-10-06', '2.0');
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('7', '2', 'Algebra', '2023-10-01', '4.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('8', '2', 'Calculus', '2023-10-02', '3.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('9', '2', 'Statistics', '2023-10-03', '2.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('10', '2', 'Geometry', '2023-10-04', '3.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('11', '2', 'Algebra', '2023-10-05', '4.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('12', '2', 'Calculus', '2023-10-06', '3.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('13', '2', 'Statistics', '2023-10-07', '2.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('14', '2', 'Geometry', '2023-10-08', '3.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('15', '3', 'Biology', '2023-10-01', '2.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('16', '3', 'Chemistry', '2023-10-02', '2.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('17', '3', 'Biology', '2023-10-03', '2.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('18', '3', 'Chemistry', '2023-10-04', '2.5')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('19', '4', 'Organic', '2023-10-01', '3.0')
-insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('20', '4', 'Physical', '2023-10-05', '2.5');
+---- Insert study_sessions tables
+----Truncate table study_sessions
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('1', '1', 'Math', '2023-10-01', '2.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('2', '1', 'Physics', '2023-10-02', '3.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('3', '1', 'Chemistry', '2023-10-03', '2.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('4', '1', 'Math', '2023-10-04', '2.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('5', '1', 'Physics', '2023-10-05', '3.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('6', '1', 'Chemistry', '2023-10-06', '2.0');
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('7', '2', 'Algebra', '2023-10-01', '4.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('8', '2', 'Calculus', '2023-10-02', '3.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('9', '2', 'Statistics', '2023-10-03', '2.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('10', '2', 'Geometry', '2023-10-04', '3.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('11', '2', 'Algebra', '2023-10-05', '4.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('12', '2', 'Calculus', '2023-10-06', '3.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('13', '2', 'Statistics', '2023-10-07', '2.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('14', '2', 'Geometry', '2023-10-08', '3.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('15', '3', 'Biology', '2023-10-01', '2.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('16', '3', 'Chemistry', '2023-10-02', '2.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('17', '3', 'Biology', '2023-10-03', '2.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('18', '3', 'Chemistry', '2023-10-04', '2.5')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('19', '4', 'Organic', '2023-10-01', '3.0')
+--insert into study_sessions (session_id, student_id, subject, session_date, hours_studied) values ('20', '4', 'Physical', '2023-10-05', '2.5');
 
-----Solution (MSSQL)
---WITH sub_count AS (
---	SELECT student_id, COUNT(DISTINCT subject) total_subject, SUM(hours_studied) total_study_hours FROM study_sessions GROUP BY student_id	
---), con_session AS (
---	SELECT student_id, session_date, 
---	DATEDIFF(DAY,session_date, LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)) diff_date
---	FROM study_sessions
---)
---SELECT sts.student_id, s.student_name, s.major, COUNT(DISTINCT sts.subject) cycle_length, MAX(pro.total_study_hours) total_study_hours
---FROM study_sessions sts 
---INNER JOIN sub_count pro ON sts.student_id = pro.student_id
---INNER JOIN students s ON sts.student_id = s.student_id
---INNER JOIN study_sessions ss ON sts.student_id = ss.student_id AND sts.subject = ss.subject AND sts.session_date < ss.session_date 
---	AND DATEDIFF(DAY,sts.session_date,ss.session_date) BETWEEN pro.total_subject AND pro.total_subject * 2
---WHERE EXISTS (SELECT 1 FROM con_session cs WHERE sts.student_id = cs.student_id AND sts.session_date = cs.session_date AND diff_date < 3)
---GROUP BY sts.student_id, s.student_name, s.major
---HAVING COUNT(DISTINCT sts.subject) > 2
---ORDER BY cycle_length DESC, total_study_hours DESC
+INSERT INTO students (student_id, student_name, major)
+VALUES
+    (201, 'Charlie', 'Engineering'),
+    (202, 'Diana', 'Arts');
 
-----Solution (MySQL)
---WITH sub_count AS (
---	SELECT student_id, COUNT(DISTINCT subject) total_subject, SUM(hours_studied) total_study_hours FROM study_sessions GROUP BY student_id	
---), con_session AS (
---	SELECT student_id, session_date, 
---	LEAD(session_date) OVER(PARTITION BY student_id ORDER BY session_date)-session_date diff_date
---	FROM study_sessions
---)
---SELECT sts.student_id, s.student_name, s.major, COUNT(DISTINCT sts.subject) cycle_length, MAX(pro.total_study_hours) total_study_hours
---FROM study_sessions sts 
---INNER JOIN sub_count pro ON sts.student_id = pro.student_id
---INNER JOIN students s ON sts.student_id = s.student_id
---INNER JOIN study_sessions ss ON sts.student_id = ss.student_id AND sts.subject = ss.subject AND sts.session_date < ss.session_date 
---	AND ss.session_date-sts.session_date BETWEEN pro.total_subject AND pro.total_subject * 2
---WHERE EXISTS (SELECT 1 FROM con_session cs WHERE sts.student_id = cs.student_id AND sts.session_date = cs.session_date AND diff_date < 3)
---GROUP BY sts.student_id, s.student_name, s.major
---HAVING COUNT(DISTINCT sts.subject) > 2
---ORDER BY cycle_length DESC, total_study_hours DESC
+INSERT INTO study_sessions (session_id, student_id, subject, session_date, hours_studied)
+VALUES
+    (1, 202, 'Art',       '2024-04-01', 1),
+    (2, 202, 'Biology',   '2024-04-02', 2),
+    (3, 202, 'Chemistry', '2024-04-03', 1),
+    (4, 202, 'Drama',     '2024-04-04', 3),
+    (5, 202, 'Art',       '2024-04-05', 1),
+    (6, 202, 'Chemistry', '2024-04-06', 2),
+    (7, 202, 'Biology',   '2024-04-07', 1),
+    (8, 202, 'Drama',     '2024-04-08', 3),
+    (9, 201, 'Math',      '2024-03-01', 2),
+    (10, 201, 'Science',  '2024-03-02', 3),
+    (11, 201, 'History',  '2024-03-04', 2),
+    (12, 201, 'Math',     '2024-03-05', 2),
+    (13, 201, 'Science',  '2024-03-06', 1),
+    (14, 201, 'History',  '2024-03-08', 2);
+
+--SELECT * FROM students;
+SELECT * FROM study_sessions;
+--Solution (MSSQL)
+
+WITH OrderedSessions AS (
+    SELECT 
+        s.student_id,
+        s.session_id,
+        s.subject,
+        s.session_date,
+        s.hours_studied,
+        ROW_NUMBER() OVER (PARTITION BY s.student_id ORDER BY s.session_date, s.session_id) AS rn
+    FROM study_sessions s
+),
+Gaps AS (
+    SELECT 
+        *,
+        LAG(session_date) OVER (PARTITION BY student_id ORDER BY rn) AS prev_date
+    FROM OrderedSessions
+),
+Blocks AS (
+    SELECT 
+        *,
+        SUM(CASE WHEN prev_date IS NULL OR DATEDIFF(day, prev_date, session_date) > 2 THEN 1 ELSE 0 END) 
+            OVER (PARTITION BY student_id ORDER BY rn) AS block_id
+    FROM Gaps
+),
+BlockPositions AS (
+    SELECT 
+        *,
+        ROW_NUMBER() OVER (PARTITION BY student_id, block_id ORDER BY rn) AS pos,
+        COUNT(*) OVER (PARTITION BY student_id, block_id) AS block_len
+    FROM Blocks
+),
+Numbers AS (
+    SELECT TOP (SELECT MAX(block_len) FROM BlockPositions) 
+        ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS n
+    FROM sys.all_objects a
+    CROSS JOIN sys.all_objects b
+),
+ValidPatterns AS (
+    SELECT 
+        bp.student_id,
+        bp.block_id,
+        n.n AS cycle_length,
+        SUM(bp.hours_studied) AS total_study_hours
+    FROM BlockPositions bp
+    JOIN Numbers n 
+        ON n.n >= 3 
+        AND n.n <= bp.block_len / 2 
+        AND bp.block_len % n.n = 0
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM BlockPositions bp2
+        WHERE bp2.student_id = bp.student_id
+          AND bp2.block_id = bp.block_id
+          AND bp2.subject <> (
+              SELECT bp3.subject
+              FROM BlockPositions bp3
+              WHERE bp3.student_id = bp.student_id
+                AND bp3.block_id = bp.block_id
+                AND bp3.pos = ((bp2.pos - 1) % n.n) + 1
+          )
+    )
+    AND (
+        SELECT COUNT(DISTINCT subject)
+        FROM BlockPositions bp4
+        WHERE bp4.student_id = bp.student_id
+          AND bp4.block_id = bp.block_id
+    ) = n.n
+    GROUP BY bp.student_id, bp.block_id, n.n
+),
+RankedPatterns AS (
+    SELECT 
+        vp.*,
+        ROW_NUMBER() OVER (PARTITION BY vp.student_id ORDER BY vp.cycle_length DESC, vp.total_study_hours DESC) AS rn
+    FROM ValidPatterns vp
+)
+SELECT 
+    s.student_id,
+    s.student_name,
+    s.major,
+    rp.cycle_length,
+    rp.total_study_hours
+FROM RankedPatterns rp
+JOIN students s ON s.student_id = rp.student_id
+WHERE rp.rn = 1
+ORDER BY rp.cycle_length DESC, rp.total_study_hours DESC;
+
+
+
 
 --Drop table
 DROP TABLE students
